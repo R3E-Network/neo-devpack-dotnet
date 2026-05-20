@@ -54,14 +54,12 @@ namespace Neo.SmartContract.Framework.Services
         /// <summary>
         /// Returns the value corresponding to the given key for the current contract (faster: generates opcode directly)
         /// </summary>
-        [Syscall("System.Storage.Local.Get")]
-        public static extern ByteString? Get(ByteString key);
+        public static ByteString? Get(ByteString key) => Get(CurrentContext, key);
 
         /// <summary>
         /// Returns the value corresponding to the given key for the current contract (faster: generates opcode directly)
         /// </summary>
-        [Syscall("System.Storage.Local.Get")]
-        public static extern ByteString? Get(byte[] key);
+        public static ByteString? Get(byte[] key) => Get(CurrentContext, key);
 
         #endregion
 
@@ -135,8 +133,7 @@ namespace Neo.SmartContract.Framework.Services
         ///  2. The value is null or value.Length > MaxStorageValueSize(the default value is 65535).
         /// </para>
         /// </summary>
-        [Syscall("System.Storage.Local.Put")]
-        public static extern void Put(ByteString key, ByteString value);
+        public static void Put(ByteString key, ByteString value) => Put(CurrentContext, key, value);
 
         /// <summary>
         /// Writes the key/value pair for the current contract (faster: generates opcode directly)
@@ -146,8 +143,7 @@ namespace Neo.SmartContract.Framework.Services
         ///  2. The value is null or value.Length > MaxStorageValueSize(the default value is 65535).
         /// </para>
         /// </summary>
-        [Syscall("System.Storage.Local.Put")]
-        public static extern void Put(byte[] key, ByteString value);
+        public static void Put(byte[] key, ByteString value) => Put(CurrentContext, key, value);
 
         /// <summary>
         /// Writes the key/value pair for the current contract (faster: generates opcode directly)
@@ -157,8 +153,7 @@ namespace Neo.SmartContract.Framework.Services
         ///  2. The value is null or value.Length > MaxStorageValueSize(the default value is 65535).
         /// </para>
         /// </summary>
-        [Syscall("System.Storage.Local.Put")]
-        public static extern void Put(byte[] key, byte[] value);
+        public static void Put(byte[] key, byte[] value) => Put(CurrentContext, key, value);
 
         /// <summary>
         /// Writes the key/value pair for the current contract (faster: generates opcode directly)
@@ -168,8 +163,7 @@ namespace Neo.SmartContract.Framework.Services
         ///  2. The value is null or value.Length > MaxStorageValueSize(the default value is 65535).
         /// </para>
         /// </summary>
-        [Syscall("System.Storage.Local.Put")]
-        public static extern void Put(ByteString key, BigInteger value);
+        public static void Put(ByteString key, BigInteger value) => Put(CurrentContext, key, value);
 
         /// <summary>
         /// Writes the key/value pair for the current contract (faster: generates opcode directly)
@@ -179,8 +173,7 @@ namespace Neo.SmartContract.Framework.Services
         ///  2. The value is null or value.Length > MaxStorageValueSize(the default value is 65535).
         /// </para>
         /// </summary>
-        [Syscall("System.Storage.Local.Put")]
-        public static extern void Put(byte[] key, BigInteger value);
+        public static void Put(byte[] key, BigInteger value) => Put(CurrentContext, key, value);
 
         #endregion
 
@@ -207,14 +200,12 @@ namespace Neo.SmartContract.Framework.Services
         /// <summary>
         /// Deletes the entry from the current contract (faster: generates opcode directly)
         /// </summary>
-        [Syscall("System.Storage.Local.Delete")]
-        public static extern void Delete(ByteString key);
+        public static void Delete(ByteString key) => Delete(CurrentContext, key);
 
         /// <summary>
         /// Deletes the entry from the current contract (faster: generates opcode directly)
         /// </summary>
-        [Syscall("System.Storage.Local.Delete")]
-        public static extern void Delete(byte[] key);
+        public static void Delete(byte[] key) => Delete(CurrentContext, key);
 
         #endregion
 
@@ -248,8 +239,7 @@ namespace Neo.SmartContract.Framework.Services
         /// The execution will fail if the options are invalid. (see <see cref="FindOptions"/>).
         /// </para>
         /// </summary>
-        [Syscall("System.Storage.Local.Find")]
-        public static extern Iterator Find(ByteString prefix, FindOptions options = FindOptions.None);
+        public static Iterator Find(ByteString prefix, FindOptions options = FindOptions.None) => Find(CurrentContext, prefix, options);
 
         /// <summary>
         /// Returns a byte[] to byte[] iterator for a byte[] prefix on the current contract (faster: generates opcode directly)
@@ -257,8 +247,7 @@ namespace Neo.SmartContract.Framework.Services
         /// The execution will fail if the options are invalid. (see <see cref="FindOptions"/>).
         /// </para>
         /// </summary>
-        [Syscall("System.Storage.Local.Find")]
-        public static extern Iterator Find(byte[] prefix, FindOptions options = FindOptions.None);
+        public static Iterator Find(byte[] prefix, FindOptions options = FindOptions.None) => Find(CurrentContext, prefix, options);
 
         #endregion
     }
