@@ -111,7 +111,12 @@ namespace Neo.Optimizer
                 if ((SingleJumpInOperand(i) && i.OpCode != CALLA) || (includePUSHA && i.OpCode == PUSHA))
                 {
                     int targetAddr = ComputeJumpTarget(a, i);
-                    Instruction target = addressToInstruction[targetAddr];
+                    if (!addressToInstruction.TryGetValue(targetAddr, out Instruction? target))
+                    {
+                        // Malformed bytecode: jump target not at a valid instruction boundary.
+                        // Skip this instruction rather than crashing the optimizer.
+                        continue;
+                    }
                     jumpSourceToTargets[i] = target;
                     if (!targetToSources.TryGetValue(target, out HashSet<Instruction>? sources))
                     {
