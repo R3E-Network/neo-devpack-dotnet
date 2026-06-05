@@ -64,6 +64,42 @@ public abstract class CryptoLib(SmartContractInitialize initialize) : SmartContr
     /// <summary>
     /// Safe method
     /// </summary>
+    [DisplayName("bn254Add")]
+    public abstract object Bn254Add(object x, object y);
+
+    /// <summary>
+    /// Safe method
+    /// </summary>
+    [DisplayName("bn254Deserialize")]
+    public abstract object Bn254Deserialize(byte[] data);
+
+    /// <summary>
+    /// Safe method
+    /// </summary>
+    [DisplayName("bn254Equal")]
+    public abstract bool Bn254Equal(object x, object y);
+
+    /// <summary>
+    /// Safe method
+    /// </summary>
+    [DisplayName("bn254Mul")]
+    public abstract object Bn254Mul(object x, byte[] scalar);
+
+    /// <summary>
+    /// Safe method
+    /// </summary>
+    [DisplayName("bn254Pairing")]
+    public abstract object Bn254Pairing(object g1, object g2);
+
+    /// <summary>
+    /// Safe method
+    /// </summary>
+    [DisplayName("bn254Serialize")]
+    public abstract byte[] Bn254Serialize(object g);
+
+    /// <summary>
+    /// Safe method
+    /// </summary>
     [DisplayName("keccak256")]
     public abstract byte[] Keccak256(byte[] data);
 
